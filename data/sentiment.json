@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "datetime": "2026-06-07T14:54:51.039936+01:00",
+    "total": 6.8,
+    "equity_direction": 7,
+    "volatility": 4,
+    "risk_appetite": 7,
+    "geopolitical_macro": 6,
+    "participant_tone": 7,
+    "rationale": "AI 랠리와 Fed 동결 기대감으로 전반적 긍정"
+  }
+]
