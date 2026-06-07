@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("Bloomberg Market Briefing")
+st.title("Market Briefing")
 
 report = load_latest()
 
@@ -54,4 +54,4 @@ if keywords:
     st.subheader("Keywords")
     st.write(" ".join([f"`{k}`" for k in keywords]))
 
-st.caption("Bloomberg 방송 기반 자동 생성 브리핑 | 5분마다 자동 갱신")
+st.caption("AI 자동 생성 마켓 브리핑")
