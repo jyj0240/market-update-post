@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 from datetime import datetime
 
@@ -11,7 +10,6 @@ REPORTS_DIR = DATA_DIR / "reports"
 
 @st.cache_data(ttl=300)
 def load_latest():
-    """최신 리포트 포인터 로드 후 해당 리포트 반환"""
     latest_path = DATA_DIR / "latest.json"
     if not latest_path.exists():
         return None
@@ -28,7 +26,6 @@ def load_latest():
 
 @st.cache_data(ttl=300)
 def load_report(date_str: str, filename: str):
-    """특정 날짜/파일명의 리포트 로드"""
     path = REPORTS_DIR / date_str / filename
     if not path.exists():
         return None
@@ -38,7 +35,6 @@ def load_report(date_str: str, filename: str):
 
 @st.cache_data(ttl=300)
 def load_sentiment_history():
-    """센티멘트 히스토리 로드"""
     path = DATA_DIR / "sentiment.json"
     if not path.exists():
         return []
@@ -48,61 +44,82 @@ def load_sentiment_history():
 
 @st.cache_data(ttl=300)
 def list_available_dates():
-    """사용 가능한 날짜 목록 (최신순)"""
     if not REPORTS_DIR.exists():
         return []
-    dates = sorted(
-        [d.name for d in REPORTS_DIR.iterdir() if d.is_dir()],
-        reverse=True,
-    )
-    return dates
+    return sorted([d.name for d in REPORTS_DIR.iterdir() if d.is_dir()], reverse=True)
 
 
 @st.cache_data(ttl=300)
 def list_reports_for_date(date_str: str):
-    """특정 날짜의 리포트 파일 목록 (시간순)"""
     date_dir = REPORTS_DIR / date_str
     if not date_dir.exists():
         return []
-    files = sorted([f.name for f in date_dir.glob("*_briefing.json")])
-    return files
+    return sorted([f.name for f in date_dir.glob("*_briefing.json")])
 
 
 def format_time_label(filename: str) -> str:
-    """파일명에서 시간 라벨 추출 (0505_briefing.json -> 05:05)"""
     base = filename.replace("_briefing.json", "")
     if len(base) == 4 and base.isdigit():
         return f"{base[:2]}:{base[2:]}"
     return base
 
 
-def format_sentiment_gauge(score, prev_score=None):
-    """텍스트 기반 센티멘트 게이지"""
+def score_to_color(score):
     if score is None:
-        return "센티멘트 데이터 없음"
-    filled = round(score)
-    empty = 10 - filled
-    bar = "\u2588" * filled + "\u2591" * empty
-
-    if score <= 2:
-        label = "매우 부정적"
-    elif score <= 4:
-        label = "부정적"
-    elif score <= 6:
-        label = "중립"
-    elif score <= 8:
-        label = "긍정적"
+        return "#64748b"
+    if score <= 3:
+        return "#ef4444"
+    elif score <= 5:
+        return "#eab308"
+    elif score <= 7:
+        return "#22c55e"
     else:
-        label = "매우 긍정적"
+        return "#10b981"
 
-    delta_str = ""
-    if prev_score is not None:
-        diff = score - prev_score
-        if diff > 0:
-            delta_str = f" (\u25b2{diff:.1f})"
-        elif diff < 0:
-            delta_str = f" (\u25bc{abs(diff):.1f})"
-        else:
-            delta_str = " (\u2192)"
 
-    return f"{bar} {score:.1f}/10 {label}{delta_str}"
+def score_to_label(score):
+    if score is None:
+        return "-"
+    if score <= 3:
+        return "Bearish"
+    elif score <= 5:
+        return "Neutral"
+    elif score <= 7:
+        return "Bullish"
+    else:
+        return "Very Bullish"
+
+
+def clean_keywords(keywords):
+    return [k for k in keywords
+            if not any(k.startswith(f"{i}.") for i in range(1, 7))
+            and len(k) < 30 and len(k) > 2]
+
+
+def render_sidebar():
+    with st.sidebar:
+        st.markdown("""
+        <div style="text-align:center; padding:1rem 0;">
+            <h2 style="margin:0; font-size:1.3rem; font-weight:700; color:#e2e8f0;">
+                Market Briefing
+            </h2>
+            <p style="color:#64748b; font-size:0.8rem; margin:0.25rem 0 0 0;">
+                AI-Powered Intelligence
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        st.divider()
+
+        history = load_sentiment_history()
+        if history:
+            latest = history[-1]
+            total = latest.get("total", 0)
+            prev = history[-2].get("total") if len(history) >= 2 else None
+            delta = f"{total - prev:+.1f}" if prev is not None else None
+            st.metric("Sentiment", f"{total:.1f}/10", delta=delta)
+
+        st.divider()
+        if st.button("Refresh", use_container_width=True):
+            st.cache_data.clear()
+            st.rerun()
+        st.caption("Auto-refreshes every 5 min.")
