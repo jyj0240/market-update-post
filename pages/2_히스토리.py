@@ -35,14 +35,6 @@ for tab, filename in zip(tabs, reports):
             st.error("리포트를 불러올 수 없습니다.")
             continue
 
-        # 메타 정보
-        time_range = report.get("time_range", {})
-        col1, col2 = st.columns(2)
-        with col1:
-            st.caption(f"분석 구간: {time_range.get('label', '-')}")
-        with col2:
-            st.caption(f"모델: {report.get('model', '-')}")
-
         # 센티멘트
         sentiment = report.get("sentiment")
         if sentiment and sentiment.get("total") is not None:
