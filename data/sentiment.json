@@ -8,5 +8,15 @@
     "geopolitical_macro": 6,
     "participant_tone": 7,
     "rationale": "AI 랠리와 Fed 동결 기대감으로 전반적 긍정"
+  },
+  {
+    "datetime": "2026-06-08T08:06:35.289422+01:00",
+    "total": 4.6,
+    "equity_direction": 4.6,
+    "volatility": 6.0,
+    "risk_appetite": 4.6,
+    "geopolitical_macro": 4.7,
+    "participant_tone": 4.6,
+    "rationale": "혼조세, 불확실성 상존"
   }
 ]
