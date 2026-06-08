@@ -1,5 +1,7 @@
 import streamlit as st
 import time
+import re
+import plotly.graph_objects as go
 from utils import (load_latest, load_sentiment_history, score_to_color,
                    score_to_label, clean_keywords, render_sidebar, render_nav, inject_css)
 
@@ -97,12 +99,60 @@ if sentiment and sentiment.get("total") is not None:
     </div>
     """)
 
+# Asset direction chart
+def parse_asset_directions(text):
+    """리포트에서 자산별 방향 추출"""
+    assets = {}
+    patterns = {
+        "US Equities": r"(?:미국 주식|US Equities?|주식).*?\[(.*?)\]",
+        "Bonds": r"(?:채권|금리|Bonds?|Rates?).*?\[(.*?)\]",
+        "Commodities": r"(?:원자재|Commodit).*?\[(.*?)\]",
+        "FX/USD": r"(?:달러|환율|FX|USD).*?\[(.*?)\]",
+        "Crypto": r"(?:암호화폐|Crypto|BTC).*?\[(.*?)\]",
+    }
+    for asset, pat in patterns.items():
+        m = re.search(pat, text, re.IGNORECASE)
+        if m:
+            direction = m.group(1).strip()
+            if any(w in direction for w in ["상승", "강세", "Up", "상"]):
+                assets[asset] = 1
+            elif any(w in direction for w in ["하락", "약세", "Down", "하"]):
+                assets[asset] = -1
+            else:
+                assets[asset] = 0
+    return assets
+
+report_md = report.get("report_markdown", "")
+assets = parse_asset_directions(report_md)
+if assets:
+    names = list(assets.keys())
+    values = list(assets.values())
+    colors = ["#22c55e" if v > 0 else "#ef4444" if v < 0 else "#64748b" for v in values]
+    symbols = ["\u25b2" if v > 0 else "\u25bc" if v < 0 else "\u25b6" for v in values]
+
+    asset_html = '<div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;">'
+    for name, val, col, sym in zip(names, values, colors, symbols):
+        asset_html += f'''
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;
+                    padding:6px 12px;flex:1;min-width:100px;text-align:center;">
+            <div style="color:#94a3b8;font-size:0.65rem;">{name}</div>
+            <div style="color:{col};font-size:1.1rem;font-weight:700;">{sym}</div>
+        </div>'''
+    asset_html += '</div>'
+    st.html(asset_html)
+
 st.divider()
 
-# Report body
-report_md = report.get("report_markdown", "")
-if report_md:
-    st.markdown(report_md)
+# Language toggle
+has_en = bool(report.get("report_markdown_en"))
+if has_en:
+    lang = st.toggle("English", value=False)
+    content_md = report.get("report_markdown_en", "") if lang else report_md
+else:
+    content_md = report_md
+
+if content_md:
+    st.markdown(content_md)
 else:
     st.warning("Report body is empty.")
 

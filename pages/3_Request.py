@@ -20,7 +20,7 @@ with st.form("briefing_request", clear_on_submit=True):
     with col_pw:
         password = st.text_input("Access Key", type="password", placeholder="Enter access key")
     with col_hrs:
-        hours = st.selectbox("Lookback", [4, 6, 8, 12], index=2,
+        hours = st.selectbox("Lookback", [1, 2, 4, 6, 8, 12], index=3,
                              format_func=lambda h: f"Last {h}h")
     submitted = st.form_submit_button("Generate Briefing", type="primary", use_container_width=True)
 
