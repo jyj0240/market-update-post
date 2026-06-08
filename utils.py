@@ -102,11 +102,11 @@ def render_nav():
     with c1:
         st.page_link("app.py", label="Briefing")
     with c2:
-        st.page_link("pages/1_시장심리.py", label="Sentiment")
+        st.page_link("pages/1_Sentiment.py", label="Sentiment")
     with c3:
-        st.page_link("pages/2_지난브리핑.py", label="History")
+        st.page_link("pages/2_History.py", label="History")
     with c4:
-        st.page_link("pages/3_관리.py", label="Request")
+        st.page_link("pages/3_Request.py", label="Request")
 
 
 def render_sidebar():
