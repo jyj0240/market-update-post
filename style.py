@@ -13,19 +13,22 @@ div[data-testid="stDecoration"] {display: none;}
 div[data-testid="stMetric"] {
     background: #1e293b;
     border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
 }
 div[data-testid="stMetric"] label {
-    font-size: 0.72rem !important;
+    font-size: 0.65rem !important;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     font-weight: 600 !important;
     color: #94a3b8 !important;
 }
 div[data-testid="stMetric"] [data-testid="stMetricValue"] {
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
     font-weight: 700 !important;
+}
+div[data-testid="stMetric"] [data-testid="stMetricDelta"] {
+    font-size: 0.7rem !important;
 }
 
 .stMarkdown code {

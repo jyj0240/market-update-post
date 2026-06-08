@@ -5,7 +5,7 @@ from utils import load_sentiment_history, score_to_color, score_to_label, render
 from style import inject_css
 
 st.set_page_config(page_title="Market Sentiment", page_icon="\U0001F4C8", layout="wide",
-                   initial_sidebar_state="collapsed",
+                   initial_sidebar_state="auto",
                    menu_items={"Get help": None, "Report a Bug": None, "About": None})
 inject_css()
 render_sidebar()

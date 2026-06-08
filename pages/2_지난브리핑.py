@@ -4,7 +4,7 @@ from utils import (list_available_dates, list_reports_for_date, load_report,
 from style import inject_css
 
 st.set_page_config(page_title="History", page_icon="\U0001F4C8", layout="wide",
-                   initial_sidebar_state="collapsed",
+                   initial_sidebar_state="auto",
                    menu_items={"Get help": None, "Report a Bug": None, "About": None})
 inject_css()
 render_sidebar()
