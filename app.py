@@ -76,40 +76,43 @@ else:
     st.info("No briefings available yet.")
     st.stop()
 
-# Sentiment metric cards
+# Sentiment - compact inline
 sentiment = report.get("sentiment")
 if sentiment and sentiment.get("total") is not None:
     history = load_sentiment_history()
     prev = history[-2] if len(history) >= 2 else None
-
-    st.markdown("")
-    cols = st.columns([1.5, 1, 1, 1, 1, 1])
-
     total = sentiment["total"]
-    delta_total = round(total - prev["total"], 1) if prev else None
-    with cols[0]:
-        st.metric("Overall Sentiment", f"{total:.1f} / 10",
-                  delta=f"{delta_total:+.1f}" if delta_total is not None else None)
+    color = score_to_color(total)
+    label = score_to_label(total)
+    pct = total * 10
 
-    component_map = {
-        "Equity": "equity_direction",
-        "Volatility": "volatility",
-        "Risk Appetite": "risk_appetite",
-        "Geopolitical": "geopolitical_macro",
-        "Tone": "participant_tone",
-    }
-    for col, (name, key) in zip(cols[1:], component_map.items()):
-        val = sentiment.get(key)
-        prev_val = prev.get(key) if prev else None
-        delta = round(val - prev_val, 1) if val is not None and prev_val is not None else None
-        delta_color = "inverse" if key == "volatility" else "normal"
-        with col:
-            st.metric(name, f"{val:.1f}" if val is not None else "--",
-                      delta=f"{delta:+.1f}" if delta is not None else None,
-                      delta_color=delta_color)
+    delta_html = ""
+    if prev:
+        diff = total - prev["total"]
+        if diff > 0:
+            delta_html = f'<span style="color:#22c55e;font-size:0.8rem;margin-left:6px;">&#9650;{diff:.1f}</span>'
+        elif diff < 0:
+            delta_html = f'<span style="color:#ef4444;font-size:0.8rem;margin-left:6px;">&#9660;{abs(diff):.1f}</span>'
 
-    if sentiment.get("rationale"):
-        st.caption(sentiment["rationale"])
+    rationale = sentiment.get("rationale", "")
+
+    st.html(f"""
+    <div style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 16px;margin:8px 0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="color:#94a3b8;font-size:0.75rem;font-weight:600;">SENTIMENT</span>
+            <span style="font-size:1.1rem;font-weight:700;color:{color};">{total:.1f}<span style="color:#475569;font-size:0.75rem;">/10</span> {delta_html}</span>
+        </div>
+        <div style="background:#0f172a;border-radius:4px;height:6px;overflow:hidden;">
+            <div style="width:{pct}%;height:100%;background:{color};border-radius:4px;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;">
+            <span style="font-size:0.65rem;color:#475569;">Bearish</span>
+            <span style="font-size:0.65rem;color:{color};font-weight:500;">{label}</span>
+            <span style="font-size:0.65rem;color:#475569;">Bullish</span>
+        </div>
+        {"<div style='color:#64748b;font-size:0.7rem;margin-top:4px;'>" + rationale + "</div>" if rationale else ""}
+    </div>
+    """)
 
 st.divider()
 
