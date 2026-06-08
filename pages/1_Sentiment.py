@@ -1,8 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from utils import load_sentiment_history, score_to_color, score_to_label, render_sidebar, render_nav
-from style import inject_css
+from utils import load_sentiment_history, score_to_color, score_to_label, render_sidebar, render_nav, inject_css
 
 st.set_page_config(page_title="Market Sentiment", page_icon="\U0001F4C8", layout="wide",
                    initial_sidebar_state="auto",

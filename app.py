@@ -1,19 +1,17 @@
 import streamlit as st
 import time
-from datetime import datetime
-from utils import load_latest, load_sentiment_history, score_to_color, score_to_label, clean_keywords, render_sidebar, render_nav
-from style import inject_css
+from utils import (load_latest, load_sentiment_history, score_to_color,
+                   score_to_label, clean_keywords, render_sidebar, render_nav, inject_css)
 
 st.set_page_config(
     page_title="Market Briefing",
-    page_icon="\U0001F4C8",
+    page_icon=":chart_with_upwards_trend:",
     layout="wide",
     initial_sidebar_state="auto",
     menu_items={"Get help": None, "Report a Bug": None, "About": None},
 )
 inject_css()
 
-# Auto-refresh every 5 minutes
 if "last_refresh" not in st.session_state:
     st.session_state.last_refresh = time.time()
 if time.time() - st.session_state.last_refresh > 300:
@@ -23,61 +21,44 @@ if time.time() - st.session_state.last_refresh > 300:
 
 render_sidebar()
 render_nav()
+
 report = load_latest()
 
-# Header banner
-if report:
-    gen_at = report.get("generated_at", "")
-    updated_label = ""
-    if gen_at:
-        try:
-            dt = datetime.fromisoformat(gen_at)
-            updated_label = dt.strftime("%Y-%m-%d %H:%M")
-        except Exception:
-            updated_label = gen_at[:16].replace("T", " ")
-
-    st.html(f"""
-    <div style="
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        color: white; padding: 1.5rem 2rem; border-radius: 12px;
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        border: 1px solid #334155;
-    ">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <h1 style="margin:0; font-size:1.8rem; font-weight:700; letter-spacing:-0.02em;">
-                    Market Briefing
-                </h1>
-                <p style="color:#a8b2d1; font-size:0.85rem; margin:0.25rem 0 0 0;">
-                    AI-Generated Market Intelligence
-                </p>
-            </div>
-            <div style="text-align:right;">
-                <div style="font-size:0.7rem; color:#a8b2d1; text-transform:uppercase; letter-spacing:0.05em;">
-                    Updated
-                </div>
-                <div style="font-size:0.95rem; font-weight:600;">{updated_label}</div>
-            </div>
-        </div>
-    </div>
-    """)
-else:
-    st.html("""
-    <div style="
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        color: white; padding: 1.5rem 2rem; border-radius: 12px;
-        border: 1px solid #334155;
-    ">
-        <h1 style="margin:0; font-size:1.8rem; font-weight:700;">Market Briefing</h1>
-        <p style="color:#a8b2d1; font-size:0.85rem; margin:0.25rem 0 0 0;">
-            AI-Generated Market Intelligence
-        </p>
-    </div>
-    """)
+if report is None:
+    st.title("Market Briefing")
     st.info("No briefings available yet.")
     st.stop()
 
-# Sentiment - compact inline
+# Header
+gen_at = report.get("generated_at", "")
+updated_label = ""
+if gen_at:
+    try:
+        from datetime import datetime
+        dt = datetime.fromisoformat(gen_at)
+        updated_label = dt.strftime("%Y-%m-%d %H:%M")
+    except Exception:
+        updated_label = gen_at[:16].replace("T", " ")
+
+st.html(f"""
+<div style="
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white; padding: 1.2rem 1.5rem; border-radius: 12px; border: 1px solid #334155;
+">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+            <h1 style="margin:0; font-size:1.5rem; font-weight:700;">Market Briefing</h1>
+            <p style="color:#a8b2d1; font-size:0.8rem; margin:0.2rem 0 0 0;">AI-Generated Market Intelligence</p>
+        </div>
+        <div style="text-align:right;">
+            <div style="font-size:0.65rem; color:#a8b2d1; text-transform:uppercase;">Updated</div>
+            <div style="font-size:0.85rem; font-weight:600;">{updated_label}</div>
+        </div>
+    </div>
+</div>
+""")
+
+# Sentiment bar
 sentiment = report.get("sentiment")
 if sentiment and sentiment.get("total") is not None:
     history = load_sentiment_history()
@@ -96,6 +77,7 @@ if sentiment and sentiment.get("total") is not None:
             delta_html = f'<span style="color:#ef4444;font-size:0.8rem;margin-left:6px;">&#9660;{abs(diff):.1f}</span>'
 
     rationale = sentiment.get("rationale", "")
+    rat_html = f'<div style="color:#64748b;font-size:0.7rem;margin-top:4px;">{rationale}</div>' if rationale else ""
 
     st.html(f"""
     <div style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 16px;margin:8px 0;">
@@ -111,7 +93,7 @@ if sentiment and sentiment.get("total") is not None:
             <span style="font-size:0.65rem;color:{color};font-weight:500;">{label}</span>
             <span style="font-size:0.65rem;color:#475569;">Bullish</span>
         </div>
-        {"<div style='color:#64748b;font-size:0.7rem;margin-top:4px;'>" + rationale + "</div>" if rationale else ""}
+        {rat_html}
     </div>
     """)
 

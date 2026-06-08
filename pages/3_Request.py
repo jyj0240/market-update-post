@@ -3,8 +3,7 @@ import json
 import base64
 import requests
 from datetime import datetime, timezone
-from style import inject_css
-from utils import render_sidebar, render_nav
+from utils import render_sidebar, render_nav, inject_css
 
 st.set_page_config(page_title="Admin", page_icon="\U0001F4C8", layout="wide",
                    initial_sidebar_state="auto",

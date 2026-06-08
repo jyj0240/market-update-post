@@ -1,7 +1,6 @@
 import streamlit as st
 from utils import (list_available_dates, list_reports_for_date, load_report,
-                   format_time_label, score_to_color, score_to_label, clean_keywords, render_sidebar, render_nav)
-from style import inject_css
+                   format_time_label, score_to_color, score_to_label, clean_keywords, render_sidebar, render_nav, inject_css)
 
 st.set_page_config(page_title="History", page_icon="\U0001F4C8", layout="wide",
                    initial_sidebar_state="auto",
