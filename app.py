@@ -128,3 +128,13 @@ keywords = clean_keywords(report.get("keywords", []))
 if keywords:
     st.divider()
     st.markdown(" ".join([f"`{k}`" for k in keywords]))
+
+# Page navigation
+st.divider()
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.page_link("pages/1_시장심리.py", label="시장심리", icon="\U0001F4C8")
+with col2:
+    st.page_link("pages/2_지난브리핑.py", label="지난 브리핑", icon="\U0001F4CB")
+with col3:
+    st.page_link("pages/3_관리.py", label="새 브리핑 요청", icon="\u2699\ufe0f")

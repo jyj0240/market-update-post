@@ -3,11 +3,8 @@ import streamlit as st
 GLOBAL_CSS = """
 <style>
 #MainMenu {visibility: hidden;}
-header {visibility: hidden;}
 footer {visibility: hidden;}
-div[data-testid="stDecoration"] {display: none;}
 .stDeployButton {display: none;}
-.stApp > header {height: 0;}
 .block-container {padding-top: 1rem !important; max-width: 900px !important;}
 
 div[data-testid="stMetric"] {
