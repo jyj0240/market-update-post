@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 from datetime import datetime
-from utils import load_latest, load_sentiment_history, score_to_color, score_to_label, clean_keywords, render_sidebar
+from utils import load_latest, load_sentiment_history, score_to_color, score_to_label, clean_keywords, render_sidebar, render_nav
 from style import inject_css
 
 st.set_page_config(
@@ -22,6 +22,7 @@ if time.time() - st.session_state.last_refresh > 300:
     st.rerun()
 
 render_sidebar()
+render_nav()
 report = load_latest()
 
 # Header banner
@@ -128,13 +129,3 @@ keywords = clean_keywords(report.get("keywords", []))
 if keywords:
     st.divider()
     st.markdown(" ".join([f"`{k}`" for k in keywords]))
-
-# Page navigation
-st.divider()
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.page_link("pages/1_시장심리.py", label="시장심리", icon="\U0001F4C8")
-with col2:
-    st.page_link("pages/2_지난브리핑.py", label="지난 브리핑", icon="\U0001F4CB")
-with col3:
-    st.page_link("pages/3_관리.py", label="새 브리핑 요청", icon="\u2699\ufe0f")

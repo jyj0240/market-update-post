@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from utils import load_sentiment_history, score_to_color, score_to_label, render_sidebar
+from utils import load_sentiment_history, score_to_color, score_to_label, render_sidebar, render_nav
 from style import inject_css
 
 st.set_page_config(page_title="Market Sentiment", page_icon="\U0001F4C8", layout="wide",
@@ -9,6 +9,7 @@ st.set_page_config(page_title="Market Sentiment", page_icon="\U0001F4C8", layout
                    menu_items={"Get help": None, "Report a Bug": None, "About": None})
 inject_css()
 render_sidebar()
+render_nav()
 
 st.title("Market Sentiment")
 
@@ -53,7 +54,7 @@ with col_gauge:
     ))
     fig.update_layout(height=250, margin=dict(l=20, r=20, t=50, b=10),
                       paper_bgcolor="rgba(0,0,0,0)", font={"color": "#e2e8f0"})
-    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False, "staticPlot": True})
 
 with col_radar:
     cats = ["Equity", "Vol (inv.)", "Risk App.", "Geopolitical", "Tone"]
@@ -85,7 +86,7 @@ with col_radar:
         showlegend=False, height=280, margin=dict(l=60, r=60, t=20, b=20),
         paper_bgcolor="rgba(0,0,0,0)",
     )
-    st.plotly_chart(fig_r, use_container_width=True, config={"displayModeBar": False})
+    st.plotly_chart(fig_r, use_container_width=True, config={"displayModeBar": False, "staticPlot": True})
 
 if latest.get("rationale"):
     st.caption(latest["rationale"])
@@ -121,7 +122,7 @@ fig_hist.update_layout(
     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
     font=dict(color="#94a3b8"), showlegend=False, hovermode="x unified",
 )
-st.plotly_chart(fig_hist, use_container_width=True, config={"displayModeBar": False})
+st.plotly_chart(fig_hist, use_container_width=True, config={"displayModeBar": False, "staticPlot": True})
 
 # Component heatmap
 if len(history) > 1:
@@ -153,7 +154,7 @@ if len(history) > 1:
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
         font=dict(color="#94a3b8"), yaxis=dict(autorange="reversed"),
     )
-    st.plotly_chart(fig_hm, use_container_width=True, config={"displayModeBar": False})
+    st.plotly_chart(fig_hm, use_container_width=True, config={"displayModeBar": False, "staticPlot": True})
 
 # Recent readings
 st.subheader("Recent Readings")

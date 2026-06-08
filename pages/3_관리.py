@@ -4,13 +4,14 @@ import base64
 import requests
 from datetime import datetime, timezone
 from style import inject_css
-from utils import render_sidebar
+from utils import render_sidebar, render_nav
 
 st.set_page_config(page_title="Admin", page_icon="\U0001F4C8", layout="wide",
                    initial_sidebar_state="auto",
                    menu_items={"Get help": None, "Report a Bug": None, "About": None})
 inject_css()
 render_sidebar()
+render_nav()
 
 st.title("Request Briefing")
 st.caption("Generate a fresh market analysis on demand.")
