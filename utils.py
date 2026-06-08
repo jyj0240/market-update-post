@@ -100,13 +100,13 @@ def render_nav():
     """모든 페이지 상단에 표시되는 네비게이션 바"""
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        st.page_link("app.py", label="Briefing", icon="\U0001F4F0")
+        st.page_link("app.py", label="Briefing")
     with c2:
-        st.page_link("pages/1_시장심리.py", label="Sentiment", icon="\U0001F4C8")
+        st.page_link("pages/1_시장심리.py", label="Sentiment")
     with c3:
-        st.page_link("pages/2_지난브리핑.py", label="History", icon="\U0001F4CB")
+        st.page_link("pages/2_지난브리핑.py", label="History")
     with c4:
-        st.page_link("pages/3_관리.py", label="Request", icon="\u2699\ufe0f")
+        st.page_link("pages/3_관리.py", label="Request")
 
 
 def render_sidebar():
