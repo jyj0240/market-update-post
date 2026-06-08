@@ -41,15 +41,14 @@ def inject_css():
 
 
 def render_nav():
-    c1, c2, c3, c4 = st.columns(4)
-    with c1:
-        st.page_link("app.py", label="Briefing")
-    with c2:
-        st.page_link("pages/1_Sentiment.py", label="Sentiment")
-    with c3:
-        st.page_link("pages/2_History.py", label="History")
-    with c4:
-        st.page_link("pages/3_Request.py", label="Request")
+    st.html("""
+    <div style="display:flex;gap:12px;padding:4px 0 8px 0;font-size:0.8rem;">
+        <a href="/" target="_self" style="color:#94a3b8;text-decoration:none;">Briefing</a>
+        <a href="/Sentiment" target="_self" style="color:#94a3b8;text-decoration:none;">Sentiment</a>
+        <a href="/History" target="_self" style="color:#94a3b8;text-decoration:none;">History</a>
+        <a href="/Request" target="_self" style="color:#94a3b8;text-decoration:none;">Request</a>
+    </div>
+    """)
 
 
 def render_sidebar():
