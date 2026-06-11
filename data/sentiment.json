@@ -358,5 +358,15 @@
     "geopolitical_macro": 4.5,
     "participant_tone": 4.4,
     "rationale": "혼조세, 불확실성 상존"
+  },
+  {
+    "datetime": "2026-06-11T21:39:40.966023+01:00",
+    "total": 5.0,
+    "equity_direction": 5.0,
+    "volatility": 7.5,
+    "risk_appetite": 5.0,
+    "geopolitical_macro": 5.0,
+    "participant_tone": 5.0,
+    "rationale": "혼조세, 불확실성 상존"
   }
 ]
