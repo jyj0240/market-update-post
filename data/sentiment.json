@@ -1,5 +1,15 @@
 [
   {
+    "datetime": "2026-01-16T07:00:00",
+    "total": 7.2,
+    "equity_direction": 7.2,
+    "volatility": 4.5,
+    "risk_appetite": 7.0,
+    "geopolitical_macro": 6.8,
+    "participant_tone": 7.2,
+    "rationale": "강한 긍정 시그널"
+  },
+  {
     "datetime": "2026-01-17T07:00:00",
     "total": 6.2,
     "equity_direction": 6.2,
