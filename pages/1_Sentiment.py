@@ -136,18 +136,23 @@ if weekly:
     ), secondary_y=True)
 
     fig_w.add_hline(y=0, line_dash="dot", line_color="#475569", line_width=1, secondary_y=False)
+    # y축 고정(세로 줌/패닝 차단), x축만 좌우 패닝 허용
     fig_w.update_yaxes(title_text="Weekly Return %", gridcolor="rgba(255,255,255,0.05)",
-                       zeroline=False, secondary_y=False)
+                       zeroline=False, fixedrange=True, secondary_y=False)
     fig_w.update_yaxes(title_text="Sentiment", range=[0, 10], dtick=2,
-                       showgrid=False, secondary_y=True)
+                       showgrid=False, fixedrange=True, secondary_y=True)
+    # 주가 많으면 기본은 최근 12주만 보이고, 나머지는 좌측으로 패닝해서 보기
+    x_range = [len(x_labels) - 12.5, len(x_labels) - 0.5] if len(x_labels) > 12 else None
+    fig_w.update_xaxes(gridcolor="rgba(255,255,255,0.05)", fixedrange=False, range=x_range)
     fig_w.update_layout(
         barmode="group", height=380, margin=dict(l=40, r=40, t=10, b=40),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.05)"),
+        dragmode="pan",  # 드래그 = 좌우 이동(과거 보기), 확대 아님
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
         font=dict(color="#94a3b8"), hovermode="x unified",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
     )
-    st.plotly_chart(fig_w, use_container_width=True, config={"displayModeBar": False})
+    st.plotly_chart(fig_w, use_container_width=True,
+                    config={"displayModeBar": False, "scrollZoom": False, "doubleClick": False})
 
 # ---------------------------------------------------------------
 # Recent daily trend (최근 7일)
