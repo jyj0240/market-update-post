@@ -10,6 +10,16 @@
     "rationale": "혼조세, 불확실성 상존"
   },
   {
+    "datetime": "2026-03-28T06:00:00",
+    "total": 5.4,
+    "equity_direction": 5.4,
+    "volatility": 9.0,
+    "risk_appetite": 5.4,
+    "geopolitical_macro": 5.3,
+    "participant_tone": 5.4,
+    "rationale": "전반적 긍정, 일부 리스크 요인 존재"
+  },
+  {
     "datetime": "2026-03-29T06:00:00",
     "total": 4.2,
     "equity_direction": 4.2,
