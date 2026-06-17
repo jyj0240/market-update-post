@@ -55,6 +55,7 @@ def render_nav():
     <div style="display:flex;gap:12px;padding:4px 0 8px 0;font-size:0.8rem;">
         <a href="/" target="_self" style="color:#94a3b8;text-decoration:none;">Briefing</a>
         <a href="/Sentiment" target="_self" style="color:#94a3b8;text-decoration:none;">Sentiment</a>
+        <a href="/Correlation" target="_self" style="color:#94a3b8;text-decoration:none;">Correlation</a>
         <a href="/History" target="_self" style="color:#94a3b8;text-decoration:none;">History</a>
         <a href="/Request" target="_self" style="color:#94a3b8;text-decoration:none;">Request</a>
     </div>
@@ -261,4 +262,45 @@ def fetch_weekly_index_returns(start_iso, end_iso, tickers=("^GSPC", "^IXIC")):
             })
         return out
     except Exception as e:  # 네트워크/yfinance 오류 시 graceful fallback
+        return {"error": str(e)}
+
+
+def daily_sentiment_series(history):
+    """ET 거래일 기준 일별 평균 sentiment total. 반환: dict {date_iso(str): float} (날짜 오름차순)"""
+    rows = {}
+    for h in history:
+        dt = _parse_dt(h.get("datetime", ""))
+        if not dt:
+            continue
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=KST)
+        d = dt.astimezone(ET).date().isoformat()
+        v = h.get("total")
+        if isinstance(v, (int, float)):
+            rows.setdefault(d, []).append(v)
+    return {d: sum(v) / len(v) for d, v in sorted(rows.items())}
+
+
+@st.cache_data(ttl=3600)
+def fetch_daily_index_closes(start_iso, end_iso, tickers=("^GSPC", "^IXIC")):
+    """yfinance로 일별 종가를 받아 {ticker: {date_iso: close}} 반환. 실패 시 {"error": msg}"""
+    tickers = tuple(tickers)
+    try:
+        import yfinance as yf
+        import pandas as pd
+
+        df = yf.download(list(tickers), start=start_iso, end=end_iso,
+                         progress=False, auto_adjust=True)
+        if df is None or df.empty:
+            return {"error": "no data returned"}
+        close = df["Close"] if "Close" in df.columns.get_level_values(0) else df
+        if isinstance(close, pd.Series):
+            close = close.to_frame(name=tickers[0])
+        out = {}
+        for t in tickers:
+            if t in close.columns:
+                s = close[t].dropna()
+                out[t] = {idx.date().isoformat(): float(v) for idx, v in s.items()}
+        return out if out else {"error": "no matching tickers"}
+    except Exception as e:
         return {"error": str(e)}
