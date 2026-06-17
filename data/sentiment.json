@@ -1,5 +1,15 @@
 [
   {
+    "datetime": "2026-03-10T06:00:00",
+    "total": 5.1,
+    "equity_direction": 5.1,
+    "volatility": 10,
+    "risk_appetite": 5.1,
+    "geopolitical_macro": 5.1,
+    "participant_tone": 5.1,
+    "rationale": "전반적 긍정, 일부 리스크 요인 존재"
+  },
+  {
     "datetime": "2026-03-11T06:00:00",
     "total": 3.8,
     "equity_direction": 3.8,
