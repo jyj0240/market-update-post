@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "datetime": "2026-06-17T06:00:00",
+    "total": 3.7,
+    "equity_direction": 3.7,
+    "volatility": 3.0,
+    "risk_appetite": 3.8,
+    "geopolitical_macro": 4.0,
+    "participant_tone": 3.7,
+    "rationale": "혼조세, 불확실성 상존"
+  }
+]
