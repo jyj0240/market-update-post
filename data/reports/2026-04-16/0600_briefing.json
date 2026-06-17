@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-06-17T21:14:47.290218+01:00",
+  "time_range": {
+    "start": "2026-04-16T06:00:00",
+    "end": "2026-04-17T06:00:00",
+    "hours_back": 24,
+    "label": "06:00~06:00 KST"
+  },
+  "provider": "gemini",
+  "model": "gemini-2.5-pro",
+  "report_markdown": "**2026년 04월 17일**\n\n**1. 오늘의 핵심 이슈**\n- 이란과 미국 간 휴전 연장 논의가 위험 선호 심리를 자극하며 글로벌 증시 상승을 견인했으나, 중동 긴장 완화에 대한 신중론도 제기되었습니다.\n- 중국의 1분기 GDP 성장률이 5%를 기록하며 예상치를 상회했으나, 소매 판매는 부진하여 내수 회복의 불균형을 드러냈습니다.\n- 세계 최대 파운드리 기업 TSMC는 강력한 AI 수요에 힘입어 예상치를 뛰어넘는 실적을 발표했으나, 하이퍼스케일러 고객 의존도에 대한 우려로 주가는 하락했습니다.\n- 유가는 배럴당 100달러 아래로 하락했으나, 호르무즈 해협의 통행 제한은 여전히 지속되고 있으며, IMF는 시장의 과도한 낙관론에 대해 경고했습니다.\n- 주요 중앙은행들은 인플레이션 압력에도 불구하고 금리 인상에 신중한 \"wait and see\" 입장을 유지하고 있습니다.\n\n**2. 자산별 동향**\n- **미국 주식**: **상승 후 혼조** 목요일(어제) S&P 500과 NASDAQ 지수가 사상 최고치를 경신하며 위험 선호 심리가 강화되었습니다. 그러나 금요일(오늘) Nasdaq 선물은 소폭 하락하는 등 혼조세를 보였습니다. AI 관련 기술주가 강세를 보였으나, 소위 'Mag 7' 종목들은 전반적인 시장 회복세에 비해 다소 뒤처지는 모습을 보였습니다.\n- **채권/금리**: **혼조** 중앙은행들이 금리 인상에 신중한 태도를 보였음에도 불구하고, 중동 분쟁으로 인한 유가 프리미엄이 단기 금리 상승 압력을 유지하며 수익률 곡선 평탄화 가능성이 제기되었습니다. 미국 금리 변동성 지표는 중동 분쟁 이전 수준으로 하락했습니다.\n- **원자재**: **하락** Brent유는 배럴당 95~98달러 수준으로 100달러를 하회했습니다. 호르무즈 해협의 통행 제한이 지속되고 있음에도 불구하고, 시장은 이란-미국 간 휴전 연장 기대감에 주목하며 유가 하락에 베팅했습니다. 금(Gold)은 소폭 상승했습니다.\n- **달러/환율**: **하락** 달러는 3주 연속 하락세를 기록했으며, Deutsche Bank와 Wells Fargo 애널리스트들은 전쟁으로 인한 달러 랠리가 종료될 수 있다고 분석했습니다.\n- **",
+  "report_markdown_en": "**April 16, 2026**\n\n**1. Key Issues**\n- Hopes for an extension of the Iran-US ceasefire are driving a risk-on sentiment in global equity markets, despite the Strait of Hormuz remaining largely closed and official caution from the White House.\n- China's economy demonstrated unexpected resilience in Q1 with strong GDP and industrial production figures, though domestic demand remains a concern, and no immediate government stimulus is anticipated.\n- The AI sector continues its robust growth, exemplified by TSMC's strong earnings and bullish outlook, yet investor focus remains on potential supply chain disruptions and customer concentration risks.\n- Central banks, including the ECB and Bank of England, are maintaining a \"wait and see\" approach on interest rates, with the IMF cautioning against rate hikes that could impede global economic growth.\n- The long-term economic repercussions of the Middle East conflict, particularly on energy prices, global supply chains, and inflation, pose significant challenges, especially for energy-importing emerging economies.\n\n**2. Asset Overview**\n- **US Equities**: **Up**. Global equities, including the S&P 500 and NASDAQ, reached all-time highs, with the S&P 500 closing above 7,000. US futures are pointing higher, building on yesterday's record. The NASDAQ 100 recorded 111 consecutive days of gains, with software stocks recently outperforming hardware. The rally is described as an \"epic chase,\" driven by short covering and algorithmic trading, with S&P",
+  "sections": {
+    "key_issues": "- 이란과 미국 간 휴전 연장 논의가 위험 선호 심리를 자극하며 글로벌 증시 상승을 견인했으나, 중동 긴장 완화에 대한 신중론도 제기되었습니다.\n- 중국의 1분기 GDP 성장률이 5%를 기록하며 예상치를 상회했으나, 소매 판매는 부진하여 내수 회복의 불균형을 드러냈습니다.\n- 세계 최대 파운드리 기업 TSMC는 강력한 AI 수요에 힘입어 예상치를 뛰어넘는 실적을 발표했으나, 하이퍼스케일러 고객 의존도에 대한 우려로 주가는 하락했습니다.\n- 유가는 배럴당 100달러 아래로 하락했으나, 호르무즈 해협의 통행 제한은 여전히 지속되고 있으며, IMF는 시장의 과도한 낙관론에 대해 경고했습니다.\n- 주요 중앙은행들은 인플레이션 압력에도 불구하고 금리 인상에 신중한 \"wait and see\" 입장을 유지하고 있습니다.",
+    "asset_movements": "- **미국 주식**: **상승 후 혼조** 목요일(어제) S&P 500과 NASDAQ 지수가 사상 최고치를 경신하며 위험 선호 심리가 강화되었습니다. 그러나 금요일(오늘) Nasdaq 선물은 소폭 하락하는 등 혼조세를 보였습니다. AI 관련 기술주가 강세를 보였으나, 소위 'Mag 7' 종목들은 전반적인 시장 회복세에 비해 다소 뒤처지는 모습을 보였습니다.\n- **채권/금리**: **혼조** 중앙은행들이 금리 인상에 신중한 태도를 보였음에도 불구하고, 중동 분쟁으로 인한 유가 프리미엄이 단기 금리 상승 압력을 유지하며 수익률 곡선 평탄화 가능성이 제기되었습니다. 미국 금리 변동성 지표는 중동 분쟁 이전 수준으로 하락했습니다.\n- **원자재**: **하락** Brent유는 배럴당 95~98달러 수준으로 100달러를 하회했습니다. 호르무즈 해협의 통행 제한이 지속되고 있음에도 불구하고, 시장은 이란-미국 간 휴전 연장 기대감에 주목하며 유가 하락에 베팅했습니다. 금(Gold)은 소폭 상승했습니다.\n- **달러/환율**: **하락** 달러는 3주 연속 하락세를 기록했으며, Deutsche Bank와 Wells Fargo 애널리스트들은 전쟁으로 인한 달러 랠리가 종료될 수 있다고 분석했습니다.\n- **"
+  },
+  "keywords": [
+    "nasdaq",
+    "mag",
+    "채권/금리",
+    "s&p",
+    "달러/환율",
+    "wells fargo",
+    "2. 자산별 동향",
+    "gdp",
+    "상승 후 혼조",
+    "2026년 04월 17일",
+    "deutsche",
+    "gold",
+    "1. 오늘의 핵심 이슈",
+    "원자재",
+    "미국 주식"
+  ],
+  "sentiment": {
+    "total": 4.7,
+    "equity_direction": 4.7,
+    "volatility": 4.5,
+    "risk_appetite": 4.7,
+    "geopolitical_macro": 4.8,
+    "participant_tone": 4.7,
+    "rationale": "혼조세, 불확실성 상존"
+  }
+}
