@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-17T22:21:39.685232+01:00",
+  "time_range": {
+    "start": "2026-03-24T06:00:00",
+    "end": "2026-03-25T06:00:00",
+    "hours_back": 24,
+    "label": "06:00~06:00 KST"
+  },
+  "provider": "ollama",
+  "model": "gemma4:31b",
+  "report_markdown": "**2026년 03월 24일**\n\n**1. 오늘의 핵심 이슈**\n- **중동 긴장 고조 및 외교적 불확실성**: 도널드 트럼프(Donald Trump) 대통령이 이란과의 생산적인 대화 및 에너지 기반 시설 공격 유예(5일간)를 언급하며 일시적 낙관론이 형성되었으나, 이란 측의 즉각적인 부인과 지속적인 군사 충돌로 인해 시장의 불안감이 다시 증폭됨.\n- **호르무즈 해협(Strait of Hormuz) 통제권**: 이란이 해협의 통제권을 쥐고 일부 선박에 '통행료'를 징수하고 있다는 보고가 나오며, 공급망 병목 현상 및 에너지 가격 상승의 핵심 변수로 부상함.\n- **EU-호주 자유무역협정(FTA) 체결**: 미국발 관세 인상 등 다자간 무역 질서 붕괴에 대응하여 EU와 호주가 약 10년 만에 FTA에 합의, 농산물 및 공산품 관세 철폐를 통해 경제 협력을 강화함.\n- **사모신용(Private Credit) 유동성 리스크**: 아폴로(Apollo) 등 주요 자산운용사가 리테일 투자자의 환매 요청 급증으로 인해 환매 한도(Cap)를 설정하는 등 사모 시장의 유동성 불일치 문제가 가시화됨.\n\n**2. 자산별 동향**\n- **미국 주식**: [하락/변동성 확대] 트럼프 대통령의 외교적 수사로 인한 일시적 랠리가 있었으나, 이란의 부인 및 사우디·UAE의 전쟁 개입 가능성 보도에 다시 하락 전환. 특히 AI 거품론과 소프트웨어 섹터의 변동성이 관찰됨.\n- **채권/금리**: [상승] 지정학적 리스크로 인한 인플레이션 우려가 반영되며 미국 10년물 국채 금리가 4.37% 수준으로 반등함.\n- **원자재**: [상승/혼조] 브렌트유(Brent Crude)는 일시적으로 $100 아래로 떨어졌으나, 호르무즈 해협 폐쇄 장기화 우려에 다시 반등하며 $103 수준을 기록. 금(Gold)은 안전자산 매력 감소 및 달러 강세로 인해 10거래일 연속 하락하는 이례적인 약세를 보임.\n- **달러/환율**: [강세] 지정학적 불안으로 인한 안전자산 수요가 다시 유입되며 달러 인덱스(Dollar Index)가 상승세를 회복함. 엔화(JPY)는 일본 CPI 성장세 둔화에도 불구하고 달러 강세 영향으로 약세를 보임.\n- **암호화폐**: [언급 적음] 전반적인 위험자산 회피 심리가 강해지며 변동성 확대 양상.\n\n**3. 매크로 & 정책**\n- **통화정책**: 중앙은행들은 에너지 가격 상승으로 인한 '스태그플레이션(Stagflation)' 위험을 경계하고 있음. 특히 유가 상승이 소비자 물가로 전이될 경우, 시장이 기대하던 금리 인하 경로가 수정되어 25bp 수준의 금리 인상 가능성까지 제기됨.\n- **에너지 안보**: 미국 내에서는 에너지 지배력(Energy Dominance) 강화를 위해 파이프라인 인프라 확충 및 규제 개혁의 필요성이 강조됨 (EQT CEO Toby Rice 언급).\n\n**4. 주목 종목 / 섹터**\n- **에너지/원자재**: **EQT** (파이프라인 확충 강조), **Adnoc** (호르무즈 해협의 무기화 및 경제적 테러 비판).\n- **금융/자산운용**: **Apollo** (사모신용 펀드 환매 제한), **Moody's** (FSKKR 캐피털 펀드 등급을 정크 수준인 BA1으로 하향).\n- **소비재/뷰티**: **Estee Lauder** (Byredo, Charlotte Tilbury 브랜드 인수를 통해 L'Oreal과 경쟁 강화 시도).\n- **빅테크/AI**: **Amazon (AWS)** (AI 에이전트를 통한 업무 자동화 및 구조조정 가능성으로 인해 일본 내 소프트웨어 기업 주가에 부정적 영향).\n\n**5. 지정학 & 기타**\n- **이란-이스라엘 전쟁**: 전쟁 25~26일 차에 접어들었으며, 미국은 15개 항목의 평화안을 제시했으나 이란은 법적 구속력이 있는 보장과 제재 완화를 요구하며 팽팽히 맞섬.\n- **중동 주변국**: 사우디아라비아와 UAE는 이란의 민간 기반 시설 공격을 '레드라인'으로 설정하고 있으며, 필요 시 군사적 개입 가능성을 시사함.\n- **레바논 상황**: 이스라엘이 레바논 남부 리타니 강(Litani River) 이남 지역의 장기 점령 가능성을 언급하며 헤즈볼라(Hezbollah) 척결 의지를 보임.\n\n**6. 내일 주목할 포인트**\n- **경제 지표**: 유로존 및 영국 PMI(구매관리자지수), 미국 PMI 발표 예정.\n- **정치 이벤트**: 유럽 의회의 EU-호주 FTA 비준 투표 결과.\n- **에너지 가격**: 호르무즈 해협의 통행 가능 여부 및 이란의 추가적인 외교적 반응에 따른 유가 변동성.\n\n---\n*AI 자동 생성 마켓 브리핑*",
+  "report_markdown_en": "**March 24, 2026**\n\n**1. Key Issues (3-5)**\n- **Iran Conflict Volatility**: Markets are experiencing extreme swings based on conflicting reports of diplomatic progress versus continued military escalation. While President Trump signaled a five-day reprieve on energy infrastructure strikes, Iran has denied direct negotiations and continues to restrict the Strait of Hormuz.\n- **Strait of Hormuz Choke Point**: The strait remains largely shut, with Iran reportedly charging \"tolls\" for friendly nations to pass. This has created a severe supply-side shock for crude oil and refined petroleum products.\n- **EU-Australia Trade Deal**: The European Union and Australia have agreed to a free trade deal after a decade of negotiations, aimed at diversifying trade ties amid rising US tariffs.\n- **Private Credit Liquidity Stress**: Apollo Global Management has capped redemptions at 5% for its Depth Solutions Fund after retail investors requested 11%, signaling potential liquidity mismatches in the $1.8 trillion private credit market.\n\n**2. Asset Overview**\n- **US Equities**: [Mixed/Bearish] Futures are lower following a brief relief rally. Investors are wary of \"head fakes\" in diplomacy and the risk of a prolonged \"frozen conflict.\"\n- **Bonds/Rates**: [Bullish/Volatile] 10-year yields are around 4.37%. There is significant debate on whether central banks will hike rates to combat oil-driven inflation or hold to avoid GDP damage.\n- **Commodities**: [Bullish] Brent Crude is rebounding toward $103/barrel after a sharp 11% plunge. Gold is on a record 10-session losing streak, currently around $2,412/oz.\n- **FX/USD**: [Bullish] The US Dollar index is bid again as safe-haven demand returns amid renewed Middle East caution. The Japanese Yen remains weak.\n- **Crypto**: [Not explicitly detailed in transcript]\n\n**3. Macro & Policy**\n- **Inflation Risks**: Analysts (including Hettle Meza) warn of \"stagflation\" risks. Oil prices are ~30% higher than three weeks ago, which is expected to feed into food inflation via fertilizer costs and transport.\n- **Central Bank Stance**: Major central banks recently kept policies unchanged. There is a shift in market expectations from rate cuts to potential 25bps hikes if inflation expectations remain unanchored.\n- **US Energy Policy**: Toby Rice (EQT CEO) emphasized the need for permanent pipeline reform to lower domestic electricity bills, which have risen 35% since 2020.\n\n**4. Notable Stocks / Sectors**\n- **Energy/Oil**: Brent Crude volatility is high. Adnoc CEO Sultan Al Jaber described the weaponization of the Strait of Hormuz as \"economic terror.\"\n- **Private Equity/Credit**: **Apollo** is gating redemptions; **Moody's** downgraded the $14 billion FSKKR capital fund to BA1 (junk) due to asset quality challenges.\n- **Consumer/Beauty**: **Estee Lauder** is expanding its portfolio with brands like Charlotte Tilbury and Byredo to compete with L'Oreal.\n- **Tech/AI**: Software sectors in Japan are seeing declines due to fears of AI disruption (e.g., AWS automating functions).\n\n**5. Geopolitics & Other**\n- **Middle East Escalation**: The conflict has entered Day 25/26. The US is deploying ~3,000 airborne troops and 5,000 Marines. Saudi Arabia and the UAE have hardened their rhetoric, with Riyadh warning that attacks on its desalination/power plants are a \"red line.\"\n- **Lebanon/Hezbollah**: Israel is signaling a potential long-term occupation of southern Lebanon up to the Litani River to deter Hezbollah.\n- **EU Strategic Shift**: The EU is deepening ties with West Africa (Ghana and Nigeria) through defense and intelligence sharing to counter Russian and Chinese influence.\n\n**6. Watch Points Ahead**\n- **US PMIs**: Scheduled for release later today.\n- **European/UK PMIs**: Expected at 9:00 AM London time.\n- **European Parliament Vote**: A critical vote on the EU-Australia trade deal is expected Thursday.\n- **Strait of Hormuz Status**: Any formal announcement regarding the reopening of the strait will be the primary catalyst for oil and equity markets.\n\n---\n*AI-Generated Market Briefing*",
+  "sections": {
+    "key_issues": "- **중동 긴장 고조 및 외교적 불확실성**: 도널드 트럼프(Donald Trump) 대통령이 이란과의 생산적인 대화 및 에너지 기반 시설 공격 유예(5일간)를 언급하며 일시적 낙관론이 형성되었으나, 이란 측의 즉각적인 부인과 지속적인 군사 충돌로 인해 시장의 불안감이 다시 증폭됨.\n- **호르무즈 해협(Strait of Hormuz) 통제권**: 이란이 해협의 통제권을 쥐고 일부 선박에 '통행료'를 징수하고 있다는 보고가 나오며, 공급망 병목 현상 및 에너지 가격 상승의 핵심 변수로 부상함.\n- **EU-호주 자유무역협정(FTA) 체결**: 미국발 관세 인상 등 다자간 무역 질서 붕괴에 대응하여 EU와 호주가 약 10년 만에 FTA에 합의, 농산물 및 공산품 관세 철폐를 통해 경제 협력을 강화함.\n- **사모신용(Private Credit) 유동성 리스크**: 아폴로(Apollo) 등 주요 자산운용사가 리테일 투자자의 환매 요청 급증으로 인해 환매 한도(Cap)를 설정하는 등 사모 시장의 유동성 불일치 문제가 가시화됨.",
+    "asset_movements": "- **미국 주식**: [하락/변동성 확대] 트럼프 대통령의 외교적 수사로 인한 일시적 랠리가 있었으나, 이란의 부인 및 사우디·UAE의 전쟁 개입 가능성 보도에 다시 하락 전환. 특히 AI 거품론과 소프트웨어 섹터의 변동성이 관찰됨.\n- **채권/금리**: [상승] 지정학적 리스크로 인한 인플레이션 우려가 반영되며 미국 10년물 국채 금리가 4.37% 수준으로 반등함.\n- **원자재**: [상승/혼조] 브렌트유(Brent Crude)는 일시적으로 $100 아래로 떨어졌으나, 호르무즈 해협 폐쇄 장기화 우려에 다시 반등하며 $103 수준을 기록. 금(Gold)은 안전자산 매력 감소 및 달러 강세로 인해 10거래일 연속 하락하는 이례적인 약세를 보임.\n- **달러/환율**: [강세] 지정학적 불안으로 인한 안전자산 수요가 다시 유입되며 달러 인덱스(Dollar Index)가 상승세를 회복함. 엔화(JPY)는 일본 CPI 성장세 둔화에도 불구하고 달러 강세 영향으로 약세를 보임.\n- **암호화폐**: [언급 적음] 전반적인 위험자산 회피 심리가 강해지며 변동성 확대 양상.",
+    "macro_policy": "- **통화정책**: 중앙은행들은 에너지 가격 상승으로 인한 '스태그플레이션(Stagflation)' 위험을 경계하고 있음. 특히 유가 상승이 소비자 물가로 전이될 경우, 시장이 기대하던 금리 인하 경로가 수정되어 25bp 수준의 금리 인상 가능성까지 제기됨.\n- **에너지 안보**: 미국 내에서는 에너지 지배력(Energy Dominance) 강화를 위해 파이프라인 인프라 확충 및 규제 개혁의 필요성이 강조됨 (EQT CEO Toby Rice 언급).",
+    "notable_stocks": "- **에너지/원자재**: **EQT** (파이프라인 확충 강조), **Adnoc** (호르무즈 해협의 무기화 및 경제적 테러 비판).\n- **금융/자산운용**: **Apollo** (사모신용 펀드 환매 제한), **Moody's** (FSKKR 캐피털 펀드 등급을 정크 수준인 BA1으로 하향).\n- **소비재/뷰티**: **Estee Lauder** (Byredo, Charlotte Tilbury 브랜드 인수를 통해 L'Oreal과 경쟁 강화 시도).\n- **빅테크/AI**: **Amazon (AWS)** (AI 에이전트를 통한 업무 자동화 및 구조조정 가능성으로 인해 일본 내 소프트웨어 기업 주가에 부정적 영향).",
+    "geopolitics": "- **이란-이스라엘 전쟁**: 전쟁 25~26일 차에 접어들었으며, 미국은 15개 항목의 평화안을 제시했으나 이란은 법적 구속력이 있는 보장과 제재 완화를 요구하며 팽팽히 맞섬.\n- **중동 주변국**: 사우디아라비아와 UAE는 이란의 민간 기반 시설 공격을 '레드라인'으로 설정하고 있으며, 필요 시 군사적 개입 가능성을 시사함.\n- **레바논 상황**: 이스라엘이 레바논 남부 리타니 강(Litani River) 이남 지역의 장기 점령 가능성을 언급하며 헤즈볼라(Hezbollah) 척결 의지를 보임.",
+    "tomorrow_outlook": "- **경제 지표**: 유로존 및 영국 PMI(구매관리자지수), 미국 PMI 발표 예정.\n- **정치 이벤트**: 유럽 의회의 EU-호주 FTA 비준 투표 결과.\n- **에너지 가격**: 호르무즈 해협의 통행 가능 여부 및 이란의 추가적인 외교적 반응에 따른 유가 변동성.\n\n---\n*AI 자동 생성 마켓 브리핑*"
+  },
+  "keywords": [
+    "에너지 가격",
+    "apollo",
+    "eqt",
+    "원자재",
+    "6. 내일 주목할 포인트",
+    "dollar index",
+    "energy dominance",
+    "에너지 안보",
+    "빅테크/ai",
+    "5. 지정학 & 기타",
+    "eu-호주 자유무역협정(fta) 체결",
+    "달러/환율",
+    "2026년 03월 24일",
+    "private credit",
+    "gold"
+  ],
+  "sentiment": {
+    "total": 5.4,
+    "equity_direction": 5.4,
+    "volatility": 10,
+    "risk_appetite": 5.4,
+    "geopolitical_macro": 5.3,
+    "participant_tone": 5.4,
+    "rationale": "전반적 긍정, 일부 리스크 요인 존재"
+  }
+}
