@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-06-17T23:22:44.508623+01:00",
+  "time_range": {
+    "start": "2026-01-27T07:00:00",
+    "end": "2026-01-28T07:00:00",
+    "hours_back": 24,
+    "label": "07:00~07:00 KST"
+  },
+  "provider": "ollama",
+  "model": "gemma4:31b",
+  "report_markdown": "**2026년 01월 27일**\n\n**1. 오늘의 핵심 이슈**\n- **트럼프 행정부의 관세 위협과 시장의 회복력**: 한국, 캐나다 등에 대한 추가 관세 위협이 지속되고 있으나, 시장은 이를 상당 부분 할인(Discounting)하며 회복력을 보임. 특히 한국 시장은 AI 테마의 강세로 인해 관세 우려를 상쇄함.\n- **EU-인도 자유무역협정(FTA) 체결**: 20년 만에 성사된 이번 협정은 자동차, 화학, 제약 분야의 관세를 대폭 낮추는 내용을 담고 있으며, 이는 미국 중심의 무역 구조에서 벗어나려는 '다변화 전략(Diversification Trade)'의 일환으로 분석됨.\n- **미국 정부 셧다운(Shutdown) 리스크**: 미네소타 주지사와의 공통분모 찾기 등 트럼프 대통령의 전략 수정 움직임이 있으나, 예산안을 둘러싼 민주당과 공화당의 대립으로 이번 주말 셧다운 가능성이 여전히 존재함.\n- **달러 약세 및 안전자산 선호**: 미국 제도에 대한 신뢰 저하와 정책 변동성으로 인해 달러 매도세가 지속되고 있으며, 이는 금(Gold)과 은(Silver) 등 귀금속 가격의 상승을 견인함.\n\n**2. 자산별 동향**\n- **미국 주식**: [중립/긍정] 매크로 환경은 건설적이며 AI 테마의 확장 단계가 지속되고 있음. 다만, 이번 주 빅테크 기업들의 실적 발표가 '증명해야 하는 분기(Show me quarter)'가 될 것으로 보여 변동성 확대 예상.\n- **채권/금리**: [중립] 미국 국채(Treasuries)에 대한 수요는 여전하나, 일본 GPIF 등 거대 연기금의 포트폴리오 조정 가능성이 신호(Signal)로 작용할 수 있음. 내일 예정된 JGB(일본 국채) 입찰 결과가 주요 변수.\n- **원자재**: [강세] 금과 은이 강력한 랠리를 기록 중. 특히 은(Silver)의 변동성이 매우 높으며, 일부 전략가는 금값이 5,000달러를 상회할 것으로 전망함.\n- **달러/환율**: [약세] 달러 가치는 단기적으로 안정세를 보이나, 옵션 시장은 여전히 매우 비관적(Bearish). 유로(EUR)는 달러 대비 강세를 보이며 1.22 수준까지 상승 가능성이 제기됨.\n- **암호화폐**: [약세] 전반적인 '디배스먼트 트레이드(Debasement Trade, 화폐 가치 하락 베팅)' 흐름 속에서도 비트코인은 올해 들어 약 12~13% 하락하며 귀금속과 상반된 흐름을 보임.\n\n**3. 매크로 & 정책**\n- **Fed(연준)**: 내일 FOMC 회의가 예정되어 있으며, 시장은 연준의 독립성 유지 여부에 주목하고 있음. 셧다운 발생 시 BLS(노동통계국) 데이터 공백으로 인해 연준의 결정이 어려워지는 '데이터 가뭄(Data Drought)' 상황이 우려됨.\n- **유럽 경제**: 독일의 성장률이 2025년 0.3%에서 2026년 1.4%로 크게 반등할 것으로 예상되며, 프랑스 산업의 모멘텀과 함께 유로존 전반의 성장 전망이 긍정적으로 변화함.\n\n**4. 주목 종목 / 섹터**\n- **반도체/AI**: **SK하이닉스(SK Hynix)**가 마이크로소프트(Microsoft)의 마이아(Maya) 칩에 HBM3E를 단독 공급한다는 보고서에 힘입어 8% 급등. **엔비디아(Nvidia)** 대비 낮은 PER(약 15배)이 매력적으로 작용.\n- **자동차/제약**: 트럼프의 관세 위협으로 **현대자동차(Hyundai Motor)** 등 자동차 및 제약 섹터가 타겟이 되었으나, AI 관련 모멘텀이 이를 상쇄하는 모습.\n- **럭셔리/소비재**: **LVMH**, **로지텍(Logitech)**의 실적 발표 예정.\n- **항공/우주**: **보잉(Boeing)**의 실적 발표 예정.\n- **기타**: **푸마(Puma)**가 중국 안타 스포츠(Anta Sports)의 지분 인수(약 29%, 18억 달러) 소식에 주가 급등. **로슈(Roche)**는 비만 치료제 테스트 긍정적 결과로 주목.\n\n**5. 지정학 & 기타**\n- **영국-중국 관계**: 키어 스타머(Keir Starmer) 영국 총리가 미국과의 관계를 유지하면서도 중국과의 비즈니스 기회를 포기하지 않겠다는 실용주의적 노선을 명확히 함.\n- **EU-인도 협력**: 단순 무역을 넘어 안보 및 국방 팩트(Defense Pact) 논의가 진행 중이며, 이는 인도의 러시아제 무기 의존도를 낮추고 유럽제 무기 수출을 확대하려는 전략적 의도가 포함됨.\n\n**6. 내일 주목할 포인트**\n- **FOMC 금리 결정 및 제롬 파월(Jay Powell) 의장의 기자회견**: 정치적 독립성 유지 및 향후 금리 경로 시그널 확인.\n- **JGB(일본 국채) 입찰 결과**: 일본 국채 시장의 움직임과 이에 따른 미국 국채 영향 분석.\n- **빅테크 실적 발표**: AI Capex(자본 지출)의 수익화(Revenue Recognition) 단계 진입 여부 확인.\n\n---\n*AI 자동 생성 마켓 브리핑*",
+  "report_markdown_en": "**January 27, 2026**\n\n**1. Key Issues (3-5)**\n- **Tariff Resilience**: Markets are showing a \"shrug\" response to repeated Trump administration tariff threats against Canada and South Korea, with AI-driven stocks offsetting geopolitical noise.\n- **The Diversification Trade**: A growing trend of global economies (EU, India, China) seeking trading partners outside the US to mitigate risks associated with US trade volatility.\n- **US Government Shutdown Risk**: Heightened probability of a shutdown by the end of the week, potentially leading to a \"data drought\" (loss of BLS data) which would complicate Fed decision-making.\n- **EU-India Trade Deal**: The signing of a landmark trade agreement after 20 years, significantly reducing tariffs on cars, chemicals, and pharmaceuticals.\n\n**2. Asset Overview**\n- **US Equities**: [Bullish/Resilient] Futures pointing higher (+19 points); AI theme remains the primary driver despite trade tensions.\n- **Bonds/Rates**: [Neutral/Cautious] Focus on the upcoming FOMC meeting; discussions regarding potential shifts in Fed leadership (e.g., Waller vs. Rick Reeder).\n- **Commodities**: [Bullish] Gold and silver rallying strongly (Gold up 1.5%); gold targets mentioned above $5,000.\n- **FX/USD**: [Bearish] Dollar stabilizing but options trading suggests bearish sentiment; Euro appreciating with a near-term target of 1.22.\n- **Crypto**: [Bearish] Bitcoin underperforming the \"debasement trade,\" down 12-13% year-to-date.\n\n**3. Macro & Policy**\n- **Federal Reserve**: The FOMC is confirmed to meet despite DC weather/closures. Markets are debating the Fed's independence and the potential for a new chair to change signals aggressively.\n- **US Fiscal Policy**: Political deadlock persists over Department of Homeland Security funding; Republicans and Democrats remain divided, increasing shutdown risks.\n- **Eurozone Growth**: Bob Matias (BNP Paribas) forecasts 2026 growth at 1.6%, with Germany expected to jump from 0.3% (2025) to 1.4% (2026).\n\n**4. Notable Stocks / Sectors**\n- **SK Hynix**: Surged 8% following reports it is the sole provider of HBM3E chips for Microsoft's Maya chips.\n- **Nvidia**: Mentioned in the context of high P/E (47x) compared to SK Hynix (15x).\n- **Puma**: Shares surging after Anta (Chinese sportswear giant) acquired a 29% stake for $1.8 billion.\n- **Hyundai**: In focus due to potential US tariffs on the auto sector.\n- **Roche**: Positive movement following obesity drug test results.\n- **Boeing & Texas Instruments**: Earnings reports highly anticipated.\n\n**5. Geopolitics & Other**\n- **EU-India Deal**: Tariffs on cars to drop from 110% to 10%; wine tariffs cut from 150% to 75%. The deal is seen as a political signal of diversification away from the US.\n- **UK-China Relations**: PM Keir Starmer is visiting Beijing with 60 executives, asserting that the UK does not have to choose between the US and China.\n- **South Korea**: Facing 25% tariff threats from the Trump administration on farmers, pharmaceuticals, and autos.\n\n**6. Watch Points Ahead**\n- **FOMC Meeting**: Tomorrow's decision and Jay Powell's press conference regarding political independence.\n- **JGB Auction**: Identified as a high-volatility event for traders.\n- **US Government Shutdown**: Deadline at the end of the current week.\n- **Tech Earnings**: \"Show me\" quarter for AI capex and revenue recognition.\n\n---\n*AI-Generated Market Briefing*",
+  "sections": {
+    "key_issues": "- **트럼프 행정부의 관세 위협과 시장의 회복력**: 한국, 캐나다 등에 대한 추가 관세 위협이 지속되고 있으나, 시장은 이를 상당 부분 할인(Discounting)하며 회복력을 보임. 특히 한국 시장은 AI 테마의 강세로 인해 관세 우려를 상쇄함.\n- **EU-인도 자유무역협정(FTA) 체결**: 20년 만에 성사된 이번 협정은 자동차, 화학, 제약 분야의 관세를 대폭 낮추는 내용을 담고 있으며, 이는 미국 중심의 무역 구조에서 벗어나려는 '다변화 전략(Diversification Trade)'의 일환으로 분석됨.\n- **미국 정부 셧다운(Shutdown) 리스크**: 미네소타 주지사와의 공통분모 찾기 등 트럼프 대통령의 전략 수정 움직임이 있으나, 예산안을 둘러싼 민주당과 공화당의 대립으로 이번 주말 셧다운 가능성이 여전히 존재함.\n- **달러 약세 및 안전자산 선호**: 미국 제도에 대한 신뢰 저하와 정책 변동성으로 인해 달러 매도세가 지속되고 있으며, 이는 금(Gold)과 은(Silver) 등 귀금속 가격의 상승을 견인함.",
+    "asset_movements": "- **미국 주식**: [중립/긍정] 매크로 환경은 건설적이며 AI 테마의 확장 단계가 지속되고 있음. 다만, 이번 주 빅테크 기업들의 실적 발표가 '증명해야 하는 분기(Show me quarter)'가 될 것으로 보여 변동성 확대 예상.\n- **채권/금리**: [중립] 미국 국채(Treasuries)에 대한 수요는 여전하나, 일본 GPIF 등 거대 연기금의 포트폴리오 조정 가능성이 신호(Signal)로 작용할 수 있음. 내일 예정된 JGB(일본 국채) 입찰 결과가 주요 변수.\n- **원자재**: [강세] 금과 은이 강력한 랠리를 기록 중. 특히 은(Silver)의 변동성이 매우 높으며, 일부 전략가는 금값이 5,000달러를 상회할 것으로 전망함.\n- **달러/환율**: [약세] 달러 가치는 단기적으로 안정세를 보이나, 옵션 시장은 여전히 매우 비관적(Bearish). 유로(EUR)는 달러 대비 강세를 보이며 1.22 수준까지 상승 가능성이 제기됨.\n- **암호화폐**: [약세] 전반적인 '디배스먼트 트레이드(Debasement Trade, 화폐 가치 하락 베팅)' 흐름 속에서도 비트코인은 올해 들어 약 12~13% 하락하며 귀금속과 상반된 흐름을 보임.",
+    "macro_policy": "- **Fed(연준)**: 내일 FOMC 회의가 예정되어 있으며, 시장은 연준의 독립성 유지 여부에 주목하고 있음. 셧다운 발생 시 BLS(노동통계국) 데이터 공백으로 인해 연준의 결정이 어려워지는 '데이터 가뭄(Data Drought)' 상황이 우려됨.\n- **유럽 경제**: 독일의 성장률이 2025년 0.3%에서 2026년 1.4%로 크게 반등할 것으로 예상되며, 프랑스 산업의 모멘텀과 함께 유로존 전반의 성장 전망이 긍정적으로 변화함.",
+    "notable_stocks": "- **반도체/AI**: **SK하이닉스(SK Hynix)**가 마이크로소프트(Microsoft)의 마이아(Maya) 칩에 HBM3E를 단독 공급한다는 보고서에 힘입어 8% 급등. **엔비디아(Nvidia)** 대비 낮은 PER(약 15배)이 매력적으로 작용.\n- **자동차/제약**: 트럼프의 관세 위협으로 **현대자동차(Hyundai Motor)** 등 자동차 및 제약 섹터가 타겟이 되었으나, AI 관련 모멘텀이 이를 상쇄하는 모습.\n- **럭셔리/소비재**: **LVMH**, **로지텍(Logitech)**의 실적 발표 예정.\n- **항공/우주**: **보잉(Boeing)**의 실적 발표 예정.\n- **기타**: **푸마(Puma)**가 중국 안타 스포츠(Anta Sports)의 지분 인수(약 29%, 18억 달러) 소식에 주가 급등. **로슈(Roche)**는 비만 치료제 테스트 긍정적 결과로 주목.",
+    "geopolitics": "- **영국-중국 관계**: 키어 스타머(Keir Starmer) 영국 총리가 미국과의 관계를 유지하면서도 중국과의 비즈니스 기회를 포기하지 않겠다는 실용주의적 노선을 명확히 함.\n- **EU-인도 협력**: 단순 무역을 넘어 안보 및 국방 팩트(Defense Pact) 논의가 진행 중이며, 이는 인도의 러시아제 무기 의존도를 낮추고 유럽제 무기 수출을 확대하려는 전략적 의도가 포함됨.",
+    "tomorrow_outlook": "- **FOMC 금리 결정 및 제롬 파월(Jay Powell) 의장의 기자회견**: 정치적 독립성 유지 및 향후 금리 경로 시그널 확인.\n- **JGB(일본 국채) 입찰 결과**: 일본 국채 시장의 움직임과 이에 따른 미국 국채 영향 분석.\n- **빅테크 실적 발표**: AI Capex(자본 지출)의 수익화(Revenue Recognition) 단계 진입 여부 확인.\n\n---\n*AI 자동 생성 마켓 브리핑*"
+  },
+  "keywords": [
+    "silver",
+    "maya",
+    "6. 내일 주목할 포인트",
+    "boeing",
+    "diversification trade",
+    "debasement trade",
+    "capex",
+    "bearish",
+    "반도체/ai",
+    "hynix",
+    "5. 지정학 & 기타",
+    "2026년 01월 27일",
+    "shutdown",
+    "nvidia",
+    "달러/환율"
+  ],
+  "sentiment": {
+    "total": 6.0,
+    "equity_direction": 6.0,
+    "volatility": 7.5,
+    "risk_appetite": 5.9,
+    "geopolitical_macro": 5.8,
+    "participant_tone": 6.0,
+    "rationale": "전반적 긍정, 일부 리스크 요인 존재"
+  }
+}
