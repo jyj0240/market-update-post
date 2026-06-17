@@ -131,7 +131,7 @@ if weekly:
     fig_w.add_trace(go.Scatter(
         x=x_labels, y=[sent_by_week.get(w) for w in weeks],
         name="Sentiment", mode="lines+markers",
-        line=dict(color="#f59e0b", width=2.5, shape="spline"),
+        line=dict(color="#f59e0b", width=2.5),  # 직선(보간 곡선이 주는 위상 왜곡 방지)
         marker=dict(size=7, color="#f59e0b"), connectgaps=True,
     ), secondary_y=True)
 

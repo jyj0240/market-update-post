@@ -1,11 +1,17 @@
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import streamlit as st
 
 DATA_DIR = Path(__file__).parent / "data"
 REPORTS_DIR = DATA_DIR / "reports"
+
+# 센티멘트 타임스탬프는 KST(미국장 마감+1h = 익일 새벽). 지수 수익률은 ET 거래일 기준 주차이므로
+# 주차 정렬을 맞추려면 센티멘트도 ET 거래일로 환산해 ISO 주차에 넣어야 함.
+KST = ZoneInfo("Asia/Seoul")
+ET = ZoneInfo("America/New_York")
 
 SENTIMENT_KEYS = ["total", "equity_direction", "volatility", "risk_appetite",
                   "geopolitical_macro", "participant_tone"]
@@ -190,15 +196,17 @@ def bucket_sentiment_history(history, recent_days=7):
     recent = [h for dt, h in parsed if dt >= cutoff]
     older = [(dt, h) for dt, h in parsed if dt < cutoff]
 
+    # ET 거래일 기준 ISO 주차로 묶어 지수 수익률 주차와 정렬을 일치시킴
     buckets = {}
     for dt, h in older:
-        iso = dt.isocalendar()
-        buckets.setdefault((iso[0], iso[1]), []).append((dt, h))
+        et_date = (dt.replace(tzinfo=KST) if dt.tzinfo is None else dt).astimezone(ET).date()
+        iso = et_date.isocalendar()
+        buckets.setdefault((iso[0], iso[1]), []).append((et_date, h))
 
     weekly = []
     for key in sorted(buckets):
         items = buckets[key]
-        d0 = items[0][0].date()
+        d0 = items[0][0]
         monday = d0 - timedelta(days=d0.weekday())
         agg = {
             "label": f"Wk {monday.strftime('%m/%d')}",
