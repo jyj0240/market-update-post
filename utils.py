@@ -1,10 +1,14 @@
 import json
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import streamlit as st
 
 DATA_DIR = Path(__file__).parent / "data"
 REPORTS_DIR = DATA_DIR / "reports"
+
+SENTIMENT_KEYS = ["total", "equity_direction", "volatility", "risk_appetite",
+                  "geopolitical_macro", "participant_tone"]
 
 CSS = """
 <style>
@@ -160,3 +164,93 @@ def clean_keywords(keywords):
     return [k for k in keywords
             if not any(k.startswith(f"{i}.") for i in range(1, 7))
             and 2 < len(k) < 30]
+
+
+def _parse_dt(s):
+    try:
+        return datetime.fromisoformat(s)
+    except (ValueError, TypeError):
+        return None
+
+
+def bucket_sentiment_history(history, recent_days=7):
+    """sentiment 이력을 (recent, weekly)로 분리.
+
+    recent : 가장 최근 entry 기준 recent_days 이내의 개별 entry (시간순)
+    weekly : 그보다 오래된 entry를 ISO 주차별로 평균낸 dict 리스트 (시간순)
+             각 dict: {label, week_start(ISO date), datetime, count, <SENTIMENT_KEYS>}
+    """
+    parsed = [(dt, h) for h in history if (dt := _parse_dt(h.get("datetime", "")))]
+    parsed.sort(key=lambda x: x[0])
+    if not parsed:
+        return [], []
+
+    latest = parsed[-1][0]
+    cutoff = latest - timedelta(days=recent_days)
+    recent = [h for dt, h in parsed if dt >= cutoff]
+    older = [(dt, h) for dt, h in parsed if dt < cutoff]
+
+    buckets = {}
+    for dt, h in older:
+        iso = dt.isocalendar()
+        buckets.setdefault((iso[0], iso[1]), []).append((dt, h))
+
+    weekly = []
+    for key in sorted(buckets):
+        items = buckets[key]
+        d0 = items[0][0].date()
+        monday = d0 - timedelta(days=d0.weekday())
+        agg = {
+            "label": f"Wk {monday.strftime('%m/%d')}",
+            "week_start": monday.isoformat(),
+            "datetime": monday.isoformat(),
+            "count": len(items),
+        }
+        for k in SENTIMENT_KEYS:
+            vals = [hh.get(k) for _, hh in items if isinstance(hh.get(k), (int, float))]
+            agg[k] = round(sum(vals) / len(vals), 2) if vals else None
+        weekly.append(agg)
+
+    return recent, weekly
+
+
+@st.cache_data(ttl=3600)
+def fetch_weekly_index_returns(start_iso, end_iso, tickers=("^GSPC", "^IXIC")):
+    """yfinance로 주간(ISO week, 월요일 기준) 지수 수익률(%)을 계산.
+
+    반환: 성공 시 list[{week_start, week_label, returns:{ticker: pct|None}}],
+          실패 시 {"error": msg}
+    """
+    tickers = tuple(tickers)
+    try:
+        import yfinance as yf
+        import pandas as pd
+
+        df = yf.download(list(tickers), start=start_iso, end=end_iso,
+                         progress=False, auto_adjust=True)
+        if df is None or df.empty:
+            return {"error": "no data returned"}
+
+        close = df["Close"] if "Close" in df.columns.get_level_values(0) else df
+        if isinstance(close, pd.Series):
+            close = close.to_frame(name=tickers[0])
+
+        # ISO 주차(월~일)와 정렬: 일요일 종료 주간 bin의 마지막 종가
+        weekly = close.resample("W-SUN").last()
+        ret = (weekly.pct_change() * 100).dropna(how="all")
+
+        out = []
+        for idx, row in ret.iterrows():
+            monday = (idx.date() - timedelta(days=6))
+            out.append({
+                "week_start": monday.isoformat(),
+                "week_label": f"Wk {monday.strftime('%m/%d')}",
+                "returns": {
+                    t: (round(float(row[t]), 2)
+                        if t in row.index and pd.notna(row[t]) else None)
+                    for t in tickers
+                },
+            })
+        return out
+    except Exception as e:  # 네트워크/yfinance 오류 시 graceful fallback
+        return {"error": str(e)}

@@ -1,7 +1,12 @@
+from datetime import date
 import streamlit as st
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from utils import load_sentiment_history, score_to_color, score_to_label, render_sidebar, render_nav, inject_css
+from utils import (load_sentiment_history, score_to_color, score_to_label,
+                   bucket_sentiment_history, fetch_weekly_index_returns,
+                   render_sidebar, render_nav, inject_css)
+
+INDEX_TICKERS = [("^GSPC", "S&P 500", "#6366f1"), ("^IXIC", "Nasdaq", "#22d3ee")]
 
 st.set_page_config(page_title="Market Sentiment", page_icon="\U0001F4C8", layout="wide",
                    initial_sidebar_state="auto",
@@ -92,74 +97,91 @@ if latest.get("rationale"):
 
 st.divider()
 
-# Historical chart
-st.subheader("Sentiment Trend")
+recent, weekly = bucket_sentiment_history(history, recent_days=7)
 
-dates = [h.get("datetime", "")[:16].replace("T", " ") for h in history]
-totals = [h.get("total") for h in history]
+# ---------------------------------------------------------------
+# Weekly view (1주 이상 지난 구간): 주간 sentiment + 주간 지수 수익률
+# ---------------------------------------------------------------
+if weekly:
+    st.subheader("Weekly Sentiment & Index Returns")
+    st.caption("1주 이상 지난 구간은 주간 평균으로 집계합니다.")
+
+    idx_data = fetch_weekly_index_returns(weekly[0]["week_start"], date.today().isoformat(),
+                                          tickers=[t[0] for t in INDEX_TICKERS])
+    sent_by_week = {w["week_start"]: w.get("total") for w in weekly}
+
+    # x축 = 지수 주차와 sentiment 주차의 합집합 (시간순)
+    if isinstance(idx_data, list) and idx_data:
+        idx_by_week = {it["week_start"]: it["returns"] for it in idx_data}
+    else:
+        idx_by_week = {}
+        if isinstance(idx_data, dict) and idx_data.get("error"):
+            st.caption(f":warning: 지수 데이터를 불러오지 못했습니다 ({idx_data['error'][:60]}).")
+
+    weeks = sorted(set(sent_by_week) | set(idx_by_week))
+    x_labels = [f"Wk {date.fromisoformat(w).strftime('%m/%d')}" for w in weeks]
+
+    fig_w = make_subplots(specs=[[{"secondary_y": True}]])
+    for ticker, name, color in INDEX_TICKERS:
+        fig_w.add_trace(go.Bar(
+            x=x_labels,
+            y=[idx_by_week.get(w, {}).get(ticker) for w in weeks],
+            name=name, marker_color=color, opacity=0.75,
+        ), secondary_y=False)
+    fig_w.add_trace(go.Scatter(
+        x=x_labels, y=[sent_by_week.get(w) for w in weeks],
+        name="Sentiment", mode="lines+markers",
+        line=dict(color="#f59e0b", width=2.5, shape="spline"),
+        marker=dict(size=7, color="#f59e0b"), connectgaps=True,
+    ), secondary_y=True)
+
+    fig_w.add_hline(y=0, line_dash="dot", line_color="#475569", line_width=1, secondary_y=False)
+    fig_w.update_yaxes(title_text="Weekly Return %", gridcolor="rgba(255,255,255,0.05)",
+                       zeroline=False, secondary_y=False)
+    fig_w.update_yaxes(title_text="Sentiment", range=[0, 10], dtick=2,
+                       showgrid=False, secondary_y=True)
+    fig_w.update_layout(
+        barmode="group", height=380, margin=dict(l=40, r=40, t=10, b=40),
+        xaxis=dict(gridcolor="rgba(255,255,255,0.05)"),
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="#94a3b8"), hovermode="x unified",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    )
+    st.plotly_chart(fig_w, use_container_width=True, config={"displayModeBar": False})
+
+# ---------------------------------------------------------------
+# Recent daily trend (최근 7일)
+# ---------------------------------------------------------------
+st.subheader("Recent Sentiment (Daily)")
+
+dates = [h.get("datetime", "")[:16].replace("T", " ") for h in recent]
+totals = [h.get("total") for h in recent]
 
 fig_hist = go.Figure()
-
-# Zone backgrounds
 fig_hist.add_hrect(y0=0, y1=3, fillcolor="rgba(239,68,68,0.05)", line_width=0)
 fig_hist.add_hrect(y0=7, y1=10, fillcolor="rgba(34,197,94,0.05)", line_width=0)
-
 fig_hist.add_trace(go.Scatter(
     x=dates, y=totals, mode="lines+markers", name="Overall",
     line=dict(color="#6366f1", width=2.5, shape="spline"),
-    marker=dict(size=7, color=[score_to_color(t) for t in totals],
+    marker=dict(size=8, color=[score_to_color(t) for t in totals],
                 line=dict(width=1, color="#1e293b")),
     fill="tozeroy", fillcolor="rgba(99,102,241,0.08)",
 ))
-
 fig_hist.add_hline(y=5, line_dash="dot", line_color="#475569", line_width=1)
-
 fig_hist.update_layout(
     yaxis=dict(range=[0, 10.5], dtick=2, gridcolor="rgba(255,255,255,0.05)"),
     xaxis=dict(gridcolor="rgba(255,255,255,0.05)"),
-    height=350, margin=dict(l=40, r=20, t=10, b=40),
+    height=320, margin=dict(l=40, r=20, t=10, b=40),
     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
     font=dict(color="#94a3b8"), showlegend=False, hovermode="x unified",
 )
 st.plotly_chart(fig_hist, use_container_width=True, config={"displayModeBar": False, "staticPlot": True})
 
-# Component heatmap
-if len(history) > 1:
-    st.subheader("Component Breakdown")
-
-    labels = ["Equity", "Volatility (inv.)", "Risk Appetite", "Geopolitical", "Tone"]
-    hm_keys = ["equity_direction", "volatility", "risk_appetite", "geopolitical_macro", "participant_tone"]
-
-    z = []
-    for k in hm_keys:
-        row = []
-        for h in history:
-            v = h.get(k, 5)
-            if k == "volatility":
-                v = 10 - v
-            row.append(v)
-        z.append(row)
-
-    fig_hm = go.Figure(go.Heatmap(
-        z=z, x=dates, y=labels,
-        colorscale=[[0, "#ef4444"], [0.3, "#f97316"], [0.5, "#64748b"],
-                    [0.7, "#22c55e"], [1, "#10b981"]],
-        zmin=0, zmax=10,
-        colorbar=dict(title="Score", tickvals=[0, 5, 10],
-                      ticktext=["Bear", "Neutral", "Bull"], len=0.8),
-    ))
-    fig_hm.update_layout(
-        height=220, margin=dict(l=100, r=20, t=10, b=40),
-        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(color="#94a3b8"), yaxis=dict(autorange="reversed"),
-    )
-    st.plotly_chart(fig_hm, use_container_width=True, config={"displayModeBar": False, "staticPlot": True})
-
 # Recent readings
 st.subheader("Recent Readings")
-recent = list(reversed(history[-6:]))
-cols = st.columns(len(recent))
-for col, h in zip(cols, recent):
+recent_cards = list(reversed(recent[-6:])) if recent else list(reversed(history[-6:]))
+cols = st.columns(len(recent_cards))
+for col, h in zip(cols, recent_cards):
     score = h.get("total", 0)
     dt_str = h.get("datetime", "")[:16].replace("T", " ")
     time_only = dt_str.split(" ")[-1] if " " in dt_str else dt_str
