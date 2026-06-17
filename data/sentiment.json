@@ -1,5 +1,15 @@
 [
   {
+    "datetime": "2026-05-21T06:00:00",
+    "total": 4.1,
+    "equity_direction": 4.1,
+    "volatility": 7.5,
+    "risk_appetite": 4.2,
+    "geopolitical_macro": 4.3,
+    "participant_tone": 4.1,
+    "rationale": "혼조세, 불확실성 상존"
+  },
+  {
     "datetime": "2026-05-22T06:00:00",
     "total": 6.0,
     "equity_direction": 6.0,
