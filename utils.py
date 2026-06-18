@@ -180,10 +180,13 @@ def clean_keywords(keywords):
 
 
 def _parse_dt(s):
+    """ISO 문자열 → tz-aware datetime. naive면 KST로 간주.
+    (백필=naive KST, 라이브=aware(+로컬오프셋) 혼재 시 비교/정렬 TypeError 방지)"""
     try:
-        return datetime.fromisoformat(s)
+        dt = datetime.fromisoformat(s)
     except (ValueError, TypeError):
         return None
+    return dt.replace(tzinfo=KST) if dt.tzinfo is None else dt
 
 
 def bucket_sentiment_history(history, recent_days=7):
