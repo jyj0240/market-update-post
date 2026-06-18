@@ -171,12 +171,13 @@ for (tk, name, color), tab in zip(TICKERS, tab_objs):
         fig_s.add_hline(y=0, line_color="#475569", line_width=1)
         fig_s.update_layout(
             height=360, margin=dict(l=50, r=20, t=10, b=45),
-            xaxis=dict(title="Weekly avg sentiment", gridcolor="rgba(255,255,255,0.05)"),
-            yaxis=dict(title="Next-week return %", gridcolor="rgba(255,255,255,0.05)", zeroline=False),
+            xaxis=dict(title="Weekly avg sentiment", gridcolor="rgba(255,255,255,0.05)", fixedrange=True),
+            yaxis=dict(title="Next-week return %", gridcolor="rgba(255,255,255,0.05)", zeroline=False, fixedrange=True),
             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
             font=dict(color="#94a3b8"), showlegend=False,
         )
-        st.plotly_chart(fig_s, use_container_width=True, config={"displayModeBar": False})
+        st.plotly_chart(fig_s, use_container_width=True,
+                        config={"displayModeBar": False, "staticPlot": True})
         st.caption(f"{name}: r = {r:+.3f} (n={n}, t={t:+.2f}). "
                    + ("약한 양의 관계이나 표본이 작아 단정 불가." if r and abs(t) < 2 else ""))
 
