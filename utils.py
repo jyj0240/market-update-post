@@ -1,7 +1,6 @@
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import streamlit as st
 
@@ -10,8 +9,15 @@ REPORTS_DIR = DATA_DIR / "reports"
 
 # 센티멘트 타임스탬프는 KST(미국장 마감+1h = 익일 새벽). 지수 수익률은 ET 거래일 기준 주차이므로
 # 주차 정렬을 맞추려면 센티멘트도 ET 거래일로 환산해 ISO 주차에 넣어야 함.
-KST = ZoneInfo("Asia/Seoul")
-ET = ZoneInfo("America/New_York")
+# zoneinfo는 IANA tz DB가 필요(requirements의 tzdata). DB가 없는 환경이어도 앱이 죽지 않도록
+# 고정 오프셋으로 폴백 (KST=+9, ET=-5 근사).
+try:
+    from zoneinfo import ZoneInfo
+    KST = ZoneInfo("Asia/Seoul")
+    ET = ZoneInfo("America/New_York")
+except Exception:  # tz DB 부재 등
+    KST = timezone(timedelta(hours=9))
+    ET = timezone(timedelta(hours=-5))
 
 SENTIMENT_KEYS = ["total", "equity_direction", "volatility", "risk_appetite",
                   "geopolitical_macro", "participant_tone"]
