@@ -1,3 +1,4 @@
+# redeploy: ensure _parse_dt naive/aware normalization is live (Streamlit Cloud refresh)
 import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
