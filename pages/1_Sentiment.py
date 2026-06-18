@@ -110,7 +110,6 @@ if weekly:
                                           tickers=[t[0] for t in INDEX_TICKERS])
     sent_by_week = {w["week_start"]: w.get("total") for w in weekly}
 
-    # x축 = 지수 주차와 sentiment 주차의 합집합 (시간순)
     if isinstance(idx_data, list) and idx_data:
         idx_by_week = {it["week_start"]: it["returns"] for it in idx_data}
     else:
@@ -118,7 +117,13 @@ if weekly:
         if isinstance(idx_data, dict) and idx_data.get("error"):
             st.caption(f":warning: 지수 데이터를 불러오지 못했습니다 ({idx_data['error'][:60]}).")
 
-    weeks = sorted(set(sent_by_week) | set(idx_by_week))
+    # x축 = sentiment·지수 둘 다 있는 주(교집합)만 사용.
+    # 합집합을 쓰면 양 끝에 한쪽만 있는 주가 생겨(맨앞 sentiment-only, 맨뒤 index-only)
+    # 라인이 막대보다 한 칸 밀려 보이는 '래깅 착시'가 생김.
+    if idx_by_week:
+        weeks = sorted(set(sent_by_week) & set(idx_by_week))
+    else:
+        weeks = sorted(sent_by_week)
     x_labels = [f"Wk {date.fromisoformat(w).strftime('%m/%d')}" for w in weeks]
 
     fig_w = make_subplots(specs=[[{"secondary_y": True}]])
