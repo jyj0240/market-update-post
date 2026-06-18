@@ -182,5 +182,67 @@ for (tk, name, color), tab in zip(TICKERS, tab_objs):
                    + ("약한 양의 관계이나 표본이 작아 단정 불가." if r and abs(t) < 2 else ""))
 
 st.divider()
+
+# --- Nasdaq − S&P 스프레드 예측 (리스크 쏠림) ---
+if "^GSPC" in closes and "^IXIC" in closes:
+    st.subheader("Risk-On Rotation: Sentiment → Next-Week (Nasdaq − S&P) Spread")
+    st.caption("Nasdaq−S&P 스프레드는 공통 시장 베타가 상쇄돼 '리스크 선호/기술주 쏠림'만 남는 지표입니다. "
+               "절대수익률보다 변동성이 작아 sentiment 신호가 더 잘 드러납니다.")
+
+    csp = pd.Series(closes["^GSPC"]); csp.index = pd.to_datetime(csp.index); csp = csp.sort_index()
+    cnq = pd.Series(closes["^IXIC"]); cnq.index = pd.to_datetime(cnq.index); cnq = cnq.sort_index()
+    rsp = csp.resample("W-SUN").last().pct_change() * 100
+    rnq = cnq.resample("W-SUN").last().pct_change() * 100
+    spread = (rnq - rsp).rename("spread")
+    wS_sp = sent_series.resample("W-SUN").mean()
+
+    r_same, n_same, t_same = corr_n_t(wS_sp, spread)
+    r_pred, n_pred, t_pred = corr_n_t(wS_sp, spread.shift(-1))
+
+    c1, c2 = st.columns(2)
+    c1.metric("동일주  S_w vs 스프레드_w", fmt(r_same, n_same, t_same))
+    c2.metric("예측  S_w vs 스프레드_{w+1}", fmt(r_pred, n_pred, t_pred))
+
+    d = pd.concat([wS_sp.rename("S"), spread.shift(-1).rename("sp")], axis=1).dropna()
+    if len(d) >= 5:
+        fig_sp = go.Figure(go.Scatter(
+            x=d["S"], y=d["sp"], mode="markers",
+            marker=dict(size=10, color="#22d3ee", opacity=0.85, line=dict(width=1, color="#1e293b")),
+            text=[i.strftime("%m/%d") for i in d.index],
+            hovertemplate="wk %{text}<br>S=%{x:.1f}<br>spread=%{y:+.2f}%p<extra></extra>",
+        ))
+        try:
+            import numpy as np
+            m, b = np.polyfit(d["S"], d["sp"], 1)
+            xs = [d["S"].min(), d["S"].max()]
+            fig_sp.add_trace(go.Scatter(x=xs, y=[m * x + b for x in xs], mode="lines",
+                                        line=dict(color="#f59e0b", width=2, dash="dash"),
+                                        hoverinfo="skip", showlegend=False))
+        except Exception:
+            pass
+        fig_sp.add_hline(y=0, line_color="#475569", line_width=1)
+        fig_sp.update_layout(
+            height=360, margin=dict(l=50, r=20, t=10, b=45),
+            xaxis=dict(title="Weekly avg sentiment", gridcolor="rgba(255,255,255,0.05)", fixedrange=True),
+            yaxis=dict(title="Next-week (Nasdaq − S&P) %p", gridcolor="rgba(255,255,255,0.05)",
+                       zeroline=False, fixedrange=True),
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(color="#94a3b8"), showlegend=False,
+        )
+        st.plotly_chart(fig_sp, use_container_width=True,
+                        config={"displayModeBar": False, "staticPlot": True})
+
+        # 상/하위 그룹 다음주 스프레드
+        med = d["S"].median()
+        hi = d[d["S"] >= med]["sp"]; lo = d[d["S"] < med]["sp"]
+        st.caption(
+            f"sentiment 상위 {len(hi)}주 → 다음주 Nasdaq이 S&P 대비 평균 {hi.mean():+.2f}%p, "
+            f"하위 {len(lo)}주 → {lo.mean():+.2f}%p (차이 {hi.mean()-lo.mean():+.2f}%p). "
+            + ("예측 상관이 유의(|t|>2) — 지금까지 중 가장 강한 신호이나 n이 작아 다중검정·단일국면 주의."
+               if t_pred is not None and abs(t_pred) > 2
+               else "표본이 작아 아직 확정적이지 않음.")
+        )
+
+st.divider()
 st.caption("⚠️ 표본이 작고(수개월) sentiment는 키워드 기반 간이 점수이며 단일 국면입니다. "
            "탐색적 참고용이며 투자 신호로 단정하지 마세요.")
