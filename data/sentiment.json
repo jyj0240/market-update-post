@@ -1528,5 +1528,15 @@
     "geopolitical_macro": 1.8,
     "participant_tone": 1.0,
     "rationale": "부정적 시그널 우세"
+  },
+  {
+    "datetime": "2026-06-26T23:06:52.551824+01:00",
+    "total": 2.1,
+    "equity_direction": 2.1,
+    "volatility": 10,
+    "risk_appetite": 2.4,
+    "geopolitical_macro": 2.7,
+    "participant_tone": 2.1,
+    "rationale": "부정적 시그널 우세"
   }
 ]
